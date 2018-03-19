@@ -1,0 +1,248 @@
+Theme: One Room
+
+Idea:
+
+	The player controls a detective in charge of investigating a bank robbery.
+
+	The win condition is the notification from a court room in which the accused is convicted based on the evidence collected by the 		detective and given to the prosecution team. If no conviction is rendered against the accused, the game is lost.
+
+	The evidence collected can be reviewed and reduced as necessary using a paper shredder in the corner of the room.
+
+	The end scene would be the detective sitting at the interrogation table, overlooking the copies of the evidence and a monitor of the 		court proceedings. The conviction would be based on the completeness of the evidence gathered, and each piece of evidence could have 		a contribution rating to the verdict. That which is reddish was not useful in the verdict and that which is green is used for it.
+
+What do we need to do?
+
+	An interrogation room
+
+	Characters
+
+		Player will control the detective in charge of investigating the crime case.
+
+			- Silver circles.
+			- There can only be one.
+
+		Police Officer (s) (maybe the chief as well) will bring in the people to be interrogated (accused, witnesses, et cetera).
+
+			- Blue circles.
+			- Text rendering for diffentiation ?
+
+		Lawyer (s) - eh, maybe. Maybe as just a presence, maybe not?
+
+			- Black circles.
+			- Text rendering for diffentiation ?
+
+		Accused individual (s)
+
+			- Orange circles.
+			- Text rendering for diffentiation ?
+
+		Witness (es) will be brought into the interrogation room to provide evidence or alibies?
+
+			- White circles.
+			- Text rendering for diffentiation ?
+
+	Interaction
+
+		The room itself is static (no panning around).
+
+		The user will be using the mouse.
+			Moving around is based on the current location of the player and where the player clicks to move.
+				Simple pathing will be required.
+			Selecting and dragging items (manilla evidence folders, moving to the trash, clicking a part in a memory playback)
+
+        Memories provide the player a mechanism to identify evidence to be collected for the pending trial.
+
+		The player can bring evidence to be used during an interrogation.
+
+			Not sure how this interaction will work (drag drop, something more static-y in the UI, ???)
+
+		A memory is displayed as a playback mechanism in a thought bubble by the interrogated person.
+
+		The player will click on items in the played back memory sequence to highlight and collect evidence.
+
+	The crime to solve (the story): Bank robbery.
+
+		The economy is failing, and many blame the banks.
+
+		Companies are being forced to lay off workers in hopes of keeping their doors open.
+
+		Not all firings go well. Some want revenge. Even less actually take revenge.
+
+		Memory #0 (the employee's supervisor):
+			The employee gets fired.
+				Did the employee have good or bad performance???
+					This may help fuel the rage at the reason for targeting a bank.
+
+		Memory #1 (the fired employee): Starting from the firing, the fired employee takes a week to let it all soak in.
+			They start drinking alcohol during the day.
+			They start watching the news more.
+
+		Memory #2 (the fired employee): The fired individual snaps.
+			They grab their own gun.
+			They get in their vehicle (car/truck/?) and go driving around town looking for a bank to rob.
+
+		Memory #3 (the security guard): The criminal walks into their branch of the large bank in town.
+			The fired employee gets in line normally.
+			The fired employee brandishes a weapon and demands money from the teller.
+
+		Memory #4 (the bank teller): Different perspective of #3, but the teller cannot tell the gun type.
+			The teller hands over the money.
+			[Strong evidence] The teller recalls the exact amount demanded.
+				This could play into scenarios such as the fired employee is trying to pay off their house mortgage or car 					loan?
+			[Strong evidence] The teller notices the hesitance in actually using the weapon, as if the criminal is inexperienced.
+
+		Memory #5 (the security guard): The criminal points the gun at guard to intimidate and demand to be let out of the building.
+			The security guard complies (for obvious reasons).
+			[Strong evidence] The security guard recognizes the gun type. (may need a specific gun sprite for this)
+				The gun will not have additional ammunition (let's make it a revolver)
+			[Strong evidence] The security guard can describe the getaway vehicle. (may need a specific gun sprite for this)
+
+		Memory #6 (the first responding police officer): The officer identifies a speeding vehicle leaving the general vicinity.
+			[Strong evidence] The police officer gets the license plate of the fleeing vehicle.
+			The police officer engages a pursuit.
+
+		Memory #7 (another responding police officer): The officer collects statements and evidence from the robbed bank.
+			May move #s 3, 4, 5, and 6 towards the end of the memory sequence, as this memory could highlight which witnesses to 				bring into the interrogation room next.
+
+		Memory #X (a pursuing police officer):
+			The police officer observes the fleeing vehicle stopping at a busy intersection.
+			The police officer notes the suspect carjacking another vehicle in the middle of the intersection.
+			[Strong evidence] The police officer gets the license plate of the carjacked vehicle.
+
+		Memory #X + 1 (a pursuing police officer):
+			The police officer radios in that shots have been fired.
+			[Strong evidence] The police officer notices the gun getting tossed out the window.
+
+		Memory #X + 2 (the arresting police officer):
+			The police officer instructs the suspect to get out of the vehicle and lay down.
+			The police officer handcuffs the suspect.
+			The police officer radios in that the suspect is in custody.
+
+	Any collected evidence can be reviewed in the interrogation room after any interrogation.
+
+		Collected evidence is indicated on the interrogation table as clickable manilla folders.
+
+		The player can decide to discard any evidence by clicking on a trashcan icon next to the unwanted manilla folder in the 			evidence review screen.
+
+	The speed of the verdict could be dependent on the percentage of strong evidences collected.
+
+	Sounds (? if there is any time left..?)
+
+	Name of the game, but here are some thought/ideas (as we go along):
+
+		> Out of Memory
+
+Work:
+
+	Interrogation Room
+		Door
+			- BUG: Door slides open into the stationary one-way mirror.
+				FIX: Flip door opening images.
+
+Somewhat done:
+
+	Interrogation Room
+		Table
+			- Add evidence folder models and views to complete the table rendering when needed.
+
+	"Characters"
+		Detective
+		Officer
+			- Add ability to push/lead individuals into the interrogation room.
+		Lawyer
+		Accused
+
+Nearly done:
+
+	Interrogation Room
+		Door
+			- Have open() and close() called on mouse events, still need other things before actually using them.
+
+Done (^_^) .. minus polishing:
+
+	Tiles (32 pixels by 32 pixels)
+
+	Interrogation Room
+		Chairs
+		Table
+		One-way mirror
+		Walls
+		Tiled floor
+		
+
+To Do:
+
+	"Characters"
+		Animated pulsing rings, indicating the current character talking.
+
+	Interrogation Room
+		Whiteboard
+			- Visualization of memories during interrogations.
+
+		Television
+			- Playback of security footage during interrogations.
+
+	Static sprites
+		Compilation of static tiles
+
+	Dynamic sprites
+		Tile/NonTile
+		SpriteController receives updates to be forwarded to the dynamic sprites.
+
+	Layers for the interrogation room:
+		Movement/Interaction is composed of
+			Characters
+				Detective
+				Suspect
+				Witnesses
+				Police Officers (escorting the interrogated individuals, as needed)
+			Table-top elements
+				Manilla folders
+				Cellphone (for receiving word of the verdict from the trial)
+
+		Lighting
+			Lights in the corners or midpoints (not where the one-way is of course) of the room (?)
+			From the [invisible] ceiling
+
+		User interface is composed of
+			Manilla folder selected
+				-
+			Cellphone selected
+				-
+			Pause screen
+				Resume
+				Credits
+				Retire (exit game)
+
+	Layers for the memories (very dependent on the memory itself)
+		Background is composed of
+			Thought bubble (maybe have a couple of variants, possibly due to memory playback size requirements?)
+			Memory background tiles
+				-
+
+		Interaction is composed of
+			Highlightable tiles/items as they are played back in the memory
+
+	World
+		The interrogation room is the "world".
+
+	Character Animations
+		Walking (in, out, and about the interrogation room, the suspect's house, the bank lobby)
+		Sitting (at the chairs in the interrogation room, the teller line)
+		Banging on the table (the detective is annoyed at the interrogation's progress with the individual being interrogated)
+			If there is extra time :)
+
+	Layers
+		interface - mouse cursor, evidence review, pause menu (allowing the exit of the game)
+
+	Memories
+		background - dependent on the memory (bank, suspect's house, the road during the pursuit)
+		characters - various, depending on the memory.
+		objects - similar, but also for some memories, like those of the pursuit, vehicles, traffic signs and lights, sidewalks, 				pedestrians, ...
+		interface - mouse cursor, evidence highlighting during playback, pause menu (incur a penalty for pausing during playback, 				like force missing the next evidence in the playback?)
+
+	End Scene (different perspective???)
+		background - the interrogation room
+		characters - the detective sitting at the table, cellphone on the table.
+		objects - 
+		interface - mouse cursor (for selecting manilla folders, the cellphone when it rings), exit game option, credits?
